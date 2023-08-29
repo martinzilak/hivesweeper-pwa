@@ -1,0 +1,41 @@
+@import 'src/modules/web/styles/Common.module';
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #ffaa00;
+  color: #671919;
+  border: 3px solid brown;
+  border-left: none;
+  border-right: none;
+}
+
+.footerItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 10px 0;
+  font-weight: bolder;
+  font-variant: all-small-caps;
+  font-size: 1.5rem;
+}
+
+.mailLink {
+  @extend .link;
+}
+
+.downloadButton {
+  align-self: center;
+  display: inline-block;
+  background: url('../../assets/images/app_store.png') center center no-repeat;
+  background-size: contain;
+  height: 80%;
+  width: 100%;
+}
