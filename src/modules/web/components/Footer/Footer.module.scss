@@ -93,7 +93,6 @@
       'createdBy'
       'contactMe'
       'downloadAt';
-    padding-top: 10px;
   }
 
   .footerItem {
@@ -102,6 +101,8 @@
   }
 
   .downloadButton {
+    height: auto;
+    margin: auto;
     background: none;
     @include link;
     &:before {
@@ -111,7 +112,7 @@
 
   .downloadAt {
     &:before {
-      content: '✔️ Download at the ';
+      content: '✔️ Download from the ';
     }
   }
 }
