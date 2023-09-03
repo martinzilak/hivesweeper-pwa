@@ -24,6 +24,6 @@
 }
 
 .a {
-  @extend .link;
+  @include link;
   color: black;
 }

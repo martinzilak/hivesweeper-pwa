@@ -1,27 +1,45 @@
 import styles from './Header.module.scss';
-import { FC } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { SiteRoute } from '../../constants';
 import classNames from 'classnames';
 
 const Header: FC = () => {
   const { pathname } = useLocation();
+  const [isFloatingMenuOpen, setIsFloatingMenuOpen] = useState(false);
 
-  return (
-    <div className={styles.header}>
-      <div className={styles.logo}></div>
+  const toggleMenu = () => {
+    setIsFloatingMenuOpen((isOpen) => !isOpen);
+  };
 
-      <div className={styles.menu}>
+  const menuItems = useMemo(
+    () => (
+      <>
         {Object.values(SiteRoute).map(({ fullPath, name, displayName }) => (
           <span
             key={name}
             className={classNames(styles.menuItem, { [styles.menuItemSelected]: fullPath === pathname })}
           >
-            <Link to={fullPath}>{displayName}</Link>
+            <Link to={fullPath} onClick={() => setIsFloatingMenuOpen(false)}>
+              {displayName}
+            </Link>
           </span>
         ))}
-      </div>
-    </div>
+      </>
+    ),
+    [pathname],
+  );
+
+  return (
+    <>
+      <div className={styles.logo} />
+
+      <div className={styles.hamburgerMenu} onClick={toggleMenu} />
+
+      {isFloatingMenuOpen && <div className={styles.floatingMenu}>{menuItems}</div>}
+
+      <div className={styles.menu}>{menuItems}</div>
+    </>
   );
 };
 

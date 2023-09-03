@@ -7,13 +7,17 @@ import Footer from '../Footer';
 const Layout: FC = () => {
   return (
     <div className={styles.layout}>
-      <Header />
+      <div className={styles.header}>
+        <Header />
+      </div>
 
       <div className={styles.content}>
         <Outlet />
       </div>
 
-      <Footer />
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </div>
   );
 };
