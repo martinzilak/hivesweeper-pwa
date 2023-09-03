@@ -1,14 +1,5 @@
 @import 'src/modules/web/styles/Common.module';
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 10px;
-}
-
 .logo {
   display: flex;
   justify-content: center;
@@ -36,11 +27,56 @@
   font-size: 2rem;
 }
 
+.hamburgerMenu {
+  display: none;
+  position: absolute;
+  background: url(../../assets/images/hamburger.png) center center no-repeat;
+  filter: invert(19%) sepia(64%) saturate(2848%) hue-rotate(343deg) brightness(93%) contrast(88%);
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  right: 2.5%;
+}
+
+.floatingMenu {
+  position: absolute;
+  font-size: 1.75rem;
+  top: 60px;
+  right: 0;
+  min-width: 200px;
+  background-color: #ffaa00;
+  border: 3px solid brown;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 .menuItem {
-  @extend .link;
+  @include link;
 }
 
 .menuItemSelected {
   color: lightyellow;
   text-decoration: underline double lightyellow;
+}
+
+@media (max-width: 768px) or (max-height: 884px) {
+  .logo {
+    width: 100%;
+    height: 100%;
+    padding: unset;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .hamburgerMenu {
+    display: block;
+  }
 }
